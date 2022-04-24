@@ -1,15 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import { createRoot } from 'react-dom/client';
+import "./index.scss";
+import App from "./App";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
+import { Provider as TribeProvider } from "@tribeplatform/react-sdk";
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.render(
+const container = document.getElementById("root")!;
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <TribeProvider
+      config={{
+        accessToken: localStorage.getItem('apiKey') || undefined,
+        baseUrl: "https://app.tribe.so/graphql",
+        networkDomain: 'anisi.tribeplatform.com',
+      }}
+    >
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </TribeProvider>
+  </React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change
@@ -20,4 +33,4 @@ serviceWorkerRegistration.unregister();
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(console.log);
