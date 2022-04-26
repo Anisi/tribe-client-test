@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
+    "checkJs": true,
     "target": "es5",
     "lib": [
       "dom",
@@ -21,6 +23,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-, "src/react.d.ts"  ]
+    "src",
+    "src/react.d.ts"
+  ]
 }

@@ -10,11 +10,13 @@ module.exports = {
         "Arial",
         "sans-serif",
       ],
-      extend: {},
+    },
+    extend: {},
+    screens: {
+      sm: { min: "450px" },
+      md: { min: "876px" },
+      lg: { min: "1000px" },
     },
   },
-  plugins: [
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/line-clamp")
-  ],
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/line-clamp")],
 };

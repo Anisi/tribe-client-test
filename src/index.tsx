@@ -1,11 +1,12 @@
-import React from "react";
-import { createRoot } from 'react-dom/client';
-import "./index.scss";
-import App from "./App";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import reportWebVitals from "./reportWebVitals";
 import { Provider as TribeProvider } from "@tribeplatform/react-sdk";
+import React from "react";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { AuthContextProvider } from "store/auth-context";
+import App from "./App";
+import "./index.scss";
+import reportWebVitals from "./reportWebVitals";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -13,13 +14,15 @@ root.render(
   <React.StrictMode>
     <TribeProvider
       config={{
-        accessToken: localStorage.getItem('apiKey') || undefined,
+        accessToken: localStorage.getItem("apiKey") || undefined,
         baseUrl: "https://app.tribe.so/graphql",
-        networkDomain: 'anisi.tribeplatform.com',
+        networkDomain: "anisi.tribeplatform.com",
       }}
     >
       <BrowserRouter>
-        <App />
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
       </BrowserRouter>
     </TribeProvider>
   </React.StrictMode>

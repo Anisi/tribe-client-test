@@ -5,5 +5,10 @@ const reactPaths = {
     'stories': {
         'show': '/stories/:storyId',
     },
+    'staticPages': {
+        'about': '/page/about',
+        'terms': '/page/terms',
+        'help': '/page/help',
+    },
 }
 export default reactPaths;
