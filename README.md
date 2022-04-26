@@ -1,6 +1,6 @@
 # Motivation
 
-I wanted to start a project base on Tribe facilities to have different challenges and be different from Tribe's default implementation.
+My idea was to start a project based on Tribe facilities to have different challenges and be different from Tribe's default implementation.
 
 I had many choices, but I chose Instagram because I thought a media-based social network would make those challenges. On the other hand, It's popular, and the features and challenges are almost recognized.
 
@@ -9,10 +9,6 @@ I had many choices, but I chose Instagram because I thought a media-based social
 Created with create-react-app v5.0.1
 
 All other dependencies are listed in [package.json](package.json).
-
-# Suggestions
-
-I think if all Tribe entities had meta-field out of the box, It would have helped the clients to be more innovative and easy to implement their ideas. I realized that post types are included in the system core but I couldn't find a way to add a new one or add met-field to existed ones.
 
 # Resolutions
 
