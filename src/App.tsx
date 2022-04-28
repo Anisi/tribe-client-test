@@ -1,24 +1,26 @@
-import { useContext } from "react";
+import React, { Suspense, useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import "App.scss";
-import Home from "pages/home/Home";
-import Story from "pages/Story";
-import About from "pages/staticPages/About";
-import Terms from "pages/staticPages/Terms";
-import Help from "pages/staticPages/Help";
-import Login from "pages/Login";
 import NotFound from "pages/NotFound";
-import Register from "pages/Register";
 import ProtectedRoute from "routes/ProtectedRoute";
 import reactPaths from "routes/reactPaths";
 import AuthContext from "store/auth-context";
+import Loading from "components/ui/Loading";
+
+const Home = React.lazy(() => import('pages/home/Home'));
+const Story = React.lazy(() => import('pages/Story'));
+const About = React.lazy(() => import('pages/staticPages/About'));
+const Terms = React.lazy(() => import('pages/staticPages/Terms'));
+const Help = React.lazy(() => import('pages/staticPages/Help'));
+const Login = React.lazy(() => import('pages/Login'));
+const Register = React.lazy(() => import('pages/Register'));
 
 function App() {
   const AuthCtx = useContext(AuthContext);
   const token = AuthCtx.token;
 
   return (
-    <>
+    <Suspense fallback={<Loading/>}>
       <Routes>
         <Route element={<ProtectedRoute isAllowed={!!token} />}>
           <Route path={reactPaths.home} element={<Home />} />
@@ -37,7 +39,7 @@ function App() {
         <Route path={reactPaths.staticPages.help} element={<Help />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </Suspense>
   );
 }
 

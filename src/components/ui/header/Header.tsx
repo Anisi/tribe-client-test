@@ -4,10 +4,10 @@ import { Image } from "@tribeplatform/gql-client/types";
 import { useNetwork } from "@tribeplatform/react-sdk/hooks";
 import React from "react";
 import { Link } from "react-router-dom";
-import reactPaths from "../../../routes/reactPaths";
-import AuthContext from "../../../store/auth-context";
-import Button from "../Button";
-import MemberMenu from "./MemberMenu";
+import reactPaths from "routes/reactPaths";
+import AuthContext from "store/auth-context";
+import Button from "components/ui/Button";
+import MemberMenu from "./components/MemberMenu";
 
 const Header: React.FC = () => {
   const AuthCtx = React.useContext(AuthContext);
@@ -20,7 +20,11 @@ const Header: React.FC = () => {
       <div className="flex justify-between items-center container mx-auto h-14">
         {network && (
           <Link to={reactPaths.home} className="h-10 block">
-            <img src={(network?.logo as Image)?.url} alt={network?.name} className="h-full" />
+            <img
+              src={(network?.logo as Image)?.url}
+              alt={network?.name}
+              className="h-full"
+            />
           </Link>
         )}
         <input
