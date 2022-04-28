@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import "App.scss";
 import Home from "pages/home/Home";
+import Story from "pages/Story";
 import About from "pages/staticPages/About";
 import Terms from "pages/staticPages/Terms";
 import Help from "pages/staticPages/Help";
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route element={<ProtectedRoute isAllowed={!!token} />}>
           <Route path={reactPaths.home} element={<Home />} />
+          <Route path={reactPaths.stories.show} element={<Story />} />
         </Route>
         <Route
           element={

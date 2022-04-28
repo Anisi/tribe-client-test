@@ -52,7 +52,7 @@ const PostItem: React.FunctionComponent<PostItemPropsInterface> = ({
       <div className="px-6 my-6">
         {reacted ? (
           <HeartIconSolid
-            className="w-8 h-8 text-slate-900 cursor-pointer"
+            className="w-8 h-8 text-red-600 cursor-pointer animate-like"
             onClick={() => downVote({ postId: post?.id, reaction: "+1" })}
           />
         ) : (
