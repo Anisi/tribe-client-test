@@ -4,6 +4,7 @@ import { Image, Post } from "@tribeplatform/gql-client/types";
 import * as React from "react";
 import { imageFullUrl, readablePastPeriod } from "utils/helpers";
 import parse from "html-react-parser";
+import ReactPlayer from "react-player";
 import {
   useAddReaction,
   useRemoveReaction,
@@ -33,11 +34,21 @@ const PostItem: React.FunctionComponent<PostItemPropsInterface> = ({
         {post.owner?.member?.username}
       </div>
 
-      <img
-        src={post.attachments[0].url}
-        alt={post.owner?.member?.username}
-        className="w-full"
-      />
+      {["jpg", "jpeg"].includes(post.attachments[0].extension) ? (
+        <img
+          src={post.attachments[0].url}
+          loading="lazy"
+          alt={post.owner?.member?.username}
+          className="w-full"
+        />
+      ) : (
+        <ReactPlayer
+          url={post.attachments[0].url}
+          width="100%"
+          hight="100%"
+          playing={true}
+        />
+      )}
       <div className="px-6 my-6">
         {reacted ? (
           <HeartIconSolid

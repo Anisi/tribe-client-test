@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <TribeProvider
       config={{
-        accessToken: localStorage.getItem("apiKey") || undefined,
+        accessToken: localStorage.getItem("token") || undefined,
         baseUrl: "https://app.tribe.so/graphql",
         networkDomain: "anisi.tribeplatform.com",
       }}

@@ -1,16 +1,20 @@
 import { Image, Post } from "@tribeplatform/gql-client/types";
+import { usePosts } from "@tribeplatform/react-sdk/hooks";
+import { simplifyPaginatedResult } from "@tribeplatform/react-sdk/utils";
 import React from "react";
 import StoryItem from "./StoryItem";
 
-type Props = {
-  stories: Post[];
-};
+const StoryList: React.FC = () => {
+  const { data: storiesRaw } = usePosts({
+    variables: { limit: 10, spaceIds: ["1puWC8ZZ3xVz"] },
+  });
 
-const StoryList: React.FC<Props> = (props) => {
+  const { nodes: stories } = simplifyPaginatedResult<Post>(storiesRaw);
+
   return (
-    props.stories && (
+    stories && (
       <ol className="flex gap-4 p-3 my-6 bg-white border border-gray-300">
-        {props.stories.map((story) => (
+        {stories.map((story) => (
           <li key={story.id}>
             <StoryItem
               username={story.owner?.member?.name || ""}
